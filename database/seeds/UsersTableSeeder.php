@@ -22,5 +22,7 @@ class UsersTableSeeder extends Seeder
         $jamal->email = 'jamal@unlv.edu';
         $jamal->password = \Hash::make('password1234');
         $jamal->save();
+
+
     }
 }
