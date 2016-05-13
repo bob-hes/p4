@@ -17,7 +17,7 @@ class ScheduleController extends Controller
 
         $user = \App\User::getCurrentUser();
 
-        $busy_time = new \App\BusyTime();
+        $busy_time = new \App\Appointment();
         $busy_time->user()->associate($user);
 
         $busy_time->save();

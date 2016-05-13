@@ -25,13 +25,13 @@ class User extends Authenticatable
     ];
 
     public function busyTimes() {
-        return $this->hasMany('\App\BusyTime');
+        return $this->hasMany('\App\Appointments');
     }
 
     public function friends() {
         return $this->belongsToMany('\App\User', 'friend_user', 'user_id', 'friend_id');
     }
-    
+
     public function add_friend($friend_id) {
         $this->friends()->attach($friend_id);
         User::find($friend_id)->friends()->attach($this->id);

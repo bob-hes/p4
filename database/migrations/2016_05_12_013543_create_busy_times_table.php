@@ -12,12 +12,14 @@ class CreateBusyTimesTable extends Migration
      */
     public function up()
     {
-        Schema::create('busy_times', function (Blueprint $table) {
+        Schema::create('appointments', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
             $table->integer('user_id')->unsigned();
             $table->timestamp('start_time');
             $table->timestamp('end_time');
+
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
@@ -28,6 +30,6 @@ class CreateBusyTimesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('busy_times');
+        Schema::drop('appointments');
     }
 }
