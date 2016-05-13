@@ -23,24 +23,22 @@ Route::get('/logout', 'Auth\AuthController@logout');
 Route::get('/register', 'Auth\AuthController@getRegister');
 Route::post('/register', 'Auth\AuthController@postRegister');
 
+Route::group(['middleware' => 'auth'], function () {
+    // Scheduling routes
+    Route::get('/schedule', 'ScheduleController@showSchedule');
+    Route::post('/add-busy-time', 'ScheduleController@addTime');
+    Route::post('/remove-busy-time', 'ScheduleController@removeTime');
+    Route::post('/edit-busy-time', 'ScheduleController@editTime');
 
+    // Relationship based routes
+    Route::get('/matches', 'FriendsController@showMatches');
+    Route::get('/p/{id}', 'FriendsController@showProfile');
+    Route::post('/add-friend', 'FriendsController@addFriend');
+    Route::post('/remove-friend', 'FriendsController@removeFriend');
 
-
-Route::get('/schedule', function () {
-    return view('welcome');
 });
 
-Route::post('/schedule', function () {
-    return view('welcome');
-});
 
-Route::get('/matches', function () {
-    return view('welcome');
-});
-
-Route::get('/p/{id}', function () {
-    return view('welcome');
-});
 
 
 Route::get('/debug', function() {
