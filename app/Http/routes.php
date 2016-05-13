@@ -43,8 +43,9 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 Route::get('/test', function() {
-    $current_id = Auth::user()->id;
-    echo \App\User::find($current_id)->id;
+
+    $user = \App\User::getCurrentUser();
+    dump($user->friends);
 });
 
 
