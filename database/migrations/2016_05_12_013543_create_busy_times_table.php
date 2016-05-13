@@ -15,7 +15,7 @@ class CreateBusyTimesTable extends Migration
         Schema::create('busy_times', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->integer('user_id');
+            $table->integer('user_id')->unsigned();
             $table->timestamp('start_time');
             $table->timestamp('end_time');
         });

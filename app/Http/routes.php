@@ -42,6 +42,11 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 
+Route::get('/test', function() {
+    $user = \App\User::all()->first();
+
+    dump($user->busyTimes());
+});
 
 
 Route::get('/debug', function() {
