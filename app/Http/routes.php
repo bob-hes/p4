@@ -15,6 +15,34 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+// Authentication
+Route::get('/login', 'Auth\AuthController@getLogin');
+Route::post('/login', 'Auth\AuthController@postLogin');
+Route::get('/logout', 'Auth\AuthController@logout');
+Route::get('/register', 'Auth\AuthController@getRegister');
+Route::post('/register', 'Auth\AuthController@postRegister');
+
+
+
+
+Route::get('/schedule', function () {
+    return view('welcome');
+});
+
+Route::post('/schedule', function () {
+    return view('welcome');
+});
+
+Route::get('/matches', function () {
+    return view('welcome');
+});
+
+Route::get('/p/{id}', function () {
+    return view('welcome');
+});
+
+
 Route::get('/debug', function() {
 
     echo '<pre>';
@@ -49,3 +77,5 @@ Route::get('/debug', function() {
     echo '</pre>';
 
 });
+
+
