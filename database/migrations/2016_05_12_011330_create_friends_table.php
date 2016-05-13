@@ -12,11 +12,14 @@ class CreateFriendsTable extends Migration
      */
     public function up()
     {
-        Schema::create('friends', function (Blueprint $table) {
+        Schema::create('friend_user', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->integer('user_id1');
-            $table->integer('user_id2');
+            $table->integer('user_id')->unsigned()->index();
+            $table->integer('friend_id')->unsigned()->index();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('friend_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -27,6 +30,6 @@ class CreateFriendsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('friends');
+        Schema::drop('friend_user');
     }
 }
