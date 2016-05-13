@@ -27,4 +27,9 @@ class User extends Authenticatable
     public function busyTimes() {
         return $this->hasMany('\App\BusyTime');
     }
+
+    public function getCurrentUser() {
+        $current_id = Auth::user()->id;
+        return User::find($current_id);
+    }
 }

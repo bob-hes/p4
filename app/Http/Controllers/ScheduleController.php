@@ -9,18 +9,29 @@ use App\Http\Requests;
 class ScheduleController extends Controller
 {
     public function showSchedule() {
+        $user = \App\User::getCurrentUser();
         return view('scheduleForm');
     }
 
-    public function addTime() {
-        return 5;
+    public function addTime(Request $request) {
+
+        $user = \App\User::getCurrentUser();
+
+        $busy_time = new \App\BusyTime();
+        $busy_time->user()->associate($user);
+
+        $busy_time->save();
+
+        return true;
     }
 
-    public function removeTime() {
-
+    public function removeTime(Request $request) {
+        $user = \App\User::getCurrentUser();
     }
 
-    public function editTime() {
-
+    public function editTime(Request $request) {
+        $user = \App\User::getCurrentUser();
     }
+    
+    
 }
