@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/home', function () {
+    return view('welcome');
+});
+
 
 // Authentication
 Route::get('/login', 'Auth\AuthController@getLogin');
@@ -35,7 +39,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/p/{id}', 'FriendsController@showProfile');
     Route::post('/add-friend', 'FriendsController@addFriend');
     Route::post('/remove-friend', 'FriendsController@removeFriend');
-
 });
 
 
