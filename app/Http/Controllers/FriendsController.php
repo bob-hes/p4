@@ -35,8 +35,16 @@ class FriendsController extends Controller
             if ($user->id === \Auth::user()->id) {
                 continue;
             }
-            $usersToReturn[$user->id] = $user->name;
+            $usersToReturn[$user->id] = ['name' => $user->name, 'busydays' => $this->stringOfBusyDays($user->appointmentsDayToReason())];
         }
         return $usersToReturn;
+    }
+
+    private function stringOfBusyDays($arr) {
+        $days = [];
+        foreach($arr as $d => $v) {
+            $days[] = $d;
+        }
+        return implode('|', $days);
     }
 }

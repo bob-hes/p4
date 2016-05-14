@@ -5,10 +5,11 @@
     <link rel="stylesheet" href="css/users.css" />
     <script src="js/users.js"></script>
     <table id="users">
-        @foreach($users as $id => $name)
+        @foreach($users as $id => $info)
             <tr>
                 <td class="name">
-                    {{$name}}
+                    {{$info['name']}}<br />
+                    {{$info['busydays']}}
                 </td>
 
                 @if(in_array($id, $friends))
