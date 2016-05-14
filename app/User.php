@@ -28,6 +28,10 @@ class User extends Authenticatable
         return $this->hasMany('\App\Appointment');
     }
 
+    public function arrayOfAppointments() {
+        return $this->appointments()->pluck('day')->toArray();
+    }
+
     public function friends() {
         return $this->belongsToMany('\App\User', 'friend_user', 'user_id', 'friend_id');
     }

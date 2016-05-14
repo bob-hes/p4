@@ -9,11 +9,19 @@ use App\Http\Requests;
 class ScheduleController extends Controller
 {
     public function showSchedule() {
+
+        // Guests go to landing page
+        if(! \Auth::check() ) {
+            return view('welcome');
+        }
+
+        // Users are shown their schedule
         $user = \App\User::getCurrentUser();
-        return view('scheduleForm');
+        return view('scheduleForm', ['daysOfWeek' => self::daysOfWeek(), 'appointments' => $user->arrayOfAppointments()]);
     }
 
     public function addTime(Request $request) {
+        return 5;
 
         $user = \App\User::getCurrentUser();
 
@@ -32,5 +40,13 @@ class ScheduleController extends Controller
         $user = \App\User::getCurrentUser();
     }
     
-    
+    private function daysOfWeek() {
+        $timestamp = strtotime('next Sunday');
+        $days = array();
+        for ($i = 0; $i < 7; $i++) {
+            $days[] = strftime('%A', $timestamp);
+            $timestamp = strtotime('+1 day', $timestamp);
+        }
+        return $days;
+    }
 }

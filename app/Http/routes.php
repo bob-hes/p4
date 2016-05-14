@@ -11,14 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/home', function () {
-    return view('welcome');
-});
-
+Route::get('/', 'ScheduleController@showSchedule');
+Route::get('/home', 'ScheduleController@showSchedule');
 
 // Authentication
 Route::get('/login', 'Auth\AuthController@getLogin');
@@ -29,7 +23,6 @@ Route::post('/register', 'Auth\AuthController@postRegister');
 
 Route::group(['middleware' => 'auth'], function () {
     // Scheduling routes
-    Route::get('/schedule', 'ScheduleController@showSchedule');
     Route::post('/add-busy-time', 'ScheduleController@addTime');
     Route::post('/remove-busy-time', 'ScheduleController@removeTime');
     Route::post('/edit-busy-time', 'ScheduleController@editTime');
@@ -44,8 +37,6 @@ Route::group(['middleware' => 'auth'], function () {
 
 Route::get('/test', function() {
 
-    $user = \App\User::getCurrentUser();
-    dump($user->friends);
 });
 
 

@@ -1,33 +1,47 @@
 @extends('layouts.app')
 
 @section('content')
+
+
+
+
 <style>
+    #schedule {
+        margin: auto;
+    }
     #schedule * {
         border: 1px black solid;
     }
-    #schedule td {
+    #schedule .time {
+        width: 150px;
         height: 500px;
     }
 </style>
 
 <table id="schedule">
     <thead>
-        @foreach (['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'] as $day)
+        @foreach ($daysOfWeek as $day)
             <th> {{ $day }} </th>
         @endforeach
     </thead>
 
     <tr>
-        @foreach(['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'] as $dau)
+        @foreach($daysOfWeek as $day)
             <td id="{{ $day }}" class="time"></td>
         @endforeach
     </tr>
 
-</table>
+    <tr>
+        @foreach($daysOfWeek as $day)
+            <td>
+                @if(in_array($day, $appointments))
+                    {{ 5 }}
+                @endif
+            </td>
+        @endforeach
+    </tr>
 
-<form action="/add-busy-time" method="post">
-    {{ csrf_field() }}
-    <input type="submit">
-</form>
+
+</table>
 
 @endsection

@@ -8,7 +8,7 @@
                 <div class="panel-heading">Welcome</div>
 
                 <div class="panel-body">
-                    Your Application's Landing Page.
+                    Free Time's Landing Page. Please register or login.
                 </div>
             </div>
         </div>

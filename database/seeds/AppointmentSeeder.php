@@ -12,11 +12,11 @@ class AppointmentSeeder extends Seeder
     public function run()
     {
         // Jill's busy days
-        $busy_days = ['Mon', 'Tues', 'Wed', 'Fri'];
+        $busy_days = ['Monday', 'Tuesday', 'Wednesday', 'Friday'];
         self::inputBusyDays($busy_days, 'Jill');
 
         // Jamal's busy days
-        $busy_days = ['Sun', 'Mon', 'Tues', 'Thurs', 'Sat'];
+        $busy_days = ['Sunday', 'Monday', 'Tuesday', 'Thursday', 'Saturday'];
         self::inputBusyDays($busy_days, 'Jamal');
     }
 
