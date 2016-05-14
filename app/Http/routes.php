@@ -28,15 +28,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/edit-busy-time', 'ScheduleController@editTime');
 
     // Relationship based routes
-    Route::get('/matches', 'FriendsController@showMatches');
-    Route::get('/p/{id}', 'FriendsController@showProfile');
+    Route::get('/users', 'FriendsController@showMatches');
     Route::post('/add-friend', 'FriendsController@addFriend');
     Route::post('/remove-friend', 'FriendsController@removeFriend');
 });
 
 
 Route::get('/test', function() {
-
+    $test = \App\Appointment::where('user_id', '=', '1')->where('day', '=', 'Monday')->first();
+    dump($test);
 });
 
 

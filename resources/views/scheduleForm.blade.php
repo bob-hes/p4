@@ -21,6 +21,10 @@
         color:white;
         background-color: green;
     }
+    .exit {
+        color:white;
+        background-color:red;
+    }
 
 
 </style>
@@ -42,9 +46,9 @@
 
     <tr>
         @foreach($daysOfWeek as $day)
-            <td>
-                @if(in_array($day, $appointments))
-                    {{5}}
+            <td id="{{ $day }}X" class="{{ isset($appointments[$day]) ? 'exit' : '' }}">
+                @if(isset($appointments[$day]))
+                    X
                 @endif
             </td>
         @endforeach

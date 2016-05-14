@@ -12,10 +12,6 @@ class FriendsController extends Controller
 
     }
 
-    public function showProfile() {
-
-    }
-
     public function addFriend() {
 
     }

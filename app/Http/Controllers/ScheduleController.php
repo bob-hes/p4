@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Appointment;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Auth;
 
 class ScheduleController extends Controller
 {
@@ -26,17 +28,34 @@ class ScheduleController extends Controller
 
         $busy_time = new \App\Appointment();
         $busy_time->user()->associate($user);
+        $busy_time->day = $request->input('day');
+        $busy_time->reason = $request->input('reason');
         $busy_time->save();
 
         return true;
     }
 
     public function removeTime(Request $request) {
-        $user = \App\User::getCurrentUser();
+        $current_id = \Auth::user()->id;
+
+        $busy_time = Appointment::where('user_id', '=', $current_id)->where('day', '=', $request->input('day'))->first();
+
+        if ($busy_time) {
+            $busy_time->delete();
+            return 'Deleted';
+        }
+        else {
+            return 'Not found';
+        }
     }
 
     public function editTime(Request $request) {
-        $user = \App\User::getCurrentUser();
+        $current_id = \Auth::user()->id;
+
+        $busy_time = Appointment::where('user_id', '=', $current_id)->where('day', '=', $request->input('day'))->first();
+        $busy_time->day = $request->input('day');
+        $busy_time->reason = $request->input('reason');
+        $busy_time->save();
     }
     
     private function daysOfWeek() {
@@ -47,5 +66,9 @@ class ScheduleController extends Controller
             $timestamp = strtotime('+1 day', $timestamp);
         }
         return $days;
+    }
+
+    private function editAppointment(Request $request, \App\Appointment $busy_time) {
+
     }
 }
