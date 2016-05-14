@@ -17,11 +17,10 @@ class ScheduleController extends Controller
 
         // Users are shown their schedule
         $user = \App\User::getCurrentUser();
-        return view('scheduleForm', ['daysOfWeek' => self::daysOfWeek(), 'appointments' => $user->arrayOfAppointments()]);
+        return view('scheduleForm', ['daysOfWeek' => self::daysOfWeek(), 'appointments' => $user->appointmentsDayToReason()]);
     }
 
     public function addTime(Request $request) {
-        return 5;
 
         $user = \App\User::getCurrentUser();
 

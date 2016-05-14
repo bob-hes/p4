@@ -11,11 +11,18 @@
     }
     #schedule * {
         border: 1px black solid;
+        text-align: center;
     }
     #schedule .time {
         width: 150px;
         height: 500px;
     }
+    .busy {
+        color:white;
+        background-color: green;
+    }
+
+
 </style>
 
 <table id="schedule">
@@ -27,7 +34,9 @@
 
     <tr>
         @foreach($daysOfWeek as $day)
-            <td id="{{ $day }}" class="time"></td>
+            <td id="{{ $day }}" class="time {{ (isset($appointments[$day])) ? 'busy' : '' }}">
+                {{ isset($appointments[$day]) ? $appointments[$day] : '' }}
+            </td>
         @endforeach
     </tr>
 
@@ -35,7 +44,7 @@
         @foreach($daysOfWeek as $day)
             <td>
                 @if(in_array($day, $appointments))
-                    {{ 5 }}
+                    {{5}}
                 @endif
             </td>
         @endforeach

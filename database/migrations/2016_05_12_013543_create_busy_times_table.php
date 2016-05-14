@@ -17,6 +17,7 @@ class CreateBusyTimesTable extends Migration
             $table->timestamps();
             $table->integer('user_id')->unsigned();
             $table->enum('day', ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']);
+            $table->string('reason');
 
             $table->foreign('user_id')->references('id')->on('users');
         });
