@@ -2,33 +2,8 @@
 
 @section('content')
 
-
-
-
-<style>
-    #schedule {
-        margin: auto;
-    }
-    #schedule * {
-        border: 1px black solid;
-        text-align: center;
-    }
-    #schedule .time {
-        width: 150px;
-        height: 500px;
-    }
-    .busy {
-        color:white;
-        background-color: green;
-    }
-    .exit {
-        color:white;
-        background-color:red;
-    }
-
-
-</style>
-
+<link rel="stylesheet" href="css/schedule.css" />
+<script src="js/schedule.js"></script>
 <table id="schedule">
     <thead>
         @foreach ($daysOfWeek as $day)

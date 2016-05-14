@@ -1,0 +1,19 @@
+#schedule {
+    margin: auto;
+}
+#schedule * {
+    border: 1px black solid;
+    text-align: center;
+}
+#schedule .time {
+    width: 150px;
+    height: 500px;
+}
+.busy {
+    color:white;
+    background-color: green;
+}
+.exit {
+    color:white;
+    background-color:red;
+}

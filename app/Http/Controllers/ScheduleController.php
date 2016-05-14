@@ -6,7 +6,6 @@ use App\Appointment;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use Illuminate\Support\Facades\Auth;
 
 class ScheduleController extends Controller
 {
@@ -32,7 +31,7 @@ class ScheduleController extends Controller
         $busy_time->reason = $request->input('reason');
         $busy_time->save();
 
-        return true;
+        return 'Added';
     }
 
     public function removeTime(Request $request) {
@@ -66,9 +65,5 @@ class ScheduleController extends Controller
             $timestamp = strtotime('+1 day', $timestamp);
         }
         return $days;
-    }
-
-    private function editAppointment(Request $request, \App\Appointment $busy_time) {
-
     }
 }
